@@ -31,6 +31,6 @@ AIAgentCryptoTrading/
 └── AIAgentCryptoTrading.Api/              # Web API endpoints
 */
 # to be added later :
-## dotnet new classlib -n AIAgentCryptoTrading.PatternRecognition
-## dotnet new classlib -n AIAgentCryptoTrading.DataCollector
-## dotnet new classlib -n AIAgentCryptoTrading.SentimentAnalysis
+dotnet new classlib -n AIAgentCryptoTrading.PatternRecognition
+dotnet new classlib -n AIAgentCryptoTrading.DataCollector
+dotnet new classlib -n AIAgentCryptoTrading.SentimentAnalysis
