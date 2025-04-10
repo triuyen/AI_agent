@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("AIAgentCryptoTrading.Core")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b6939e5e0fcdf1d5e043151ee097cb994a0d515b")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+35fd5f775c768fd26ac22d66420f29a47d5538b0")]
 [assembly: System.Reflection.AssemblyProductAttribute("AIAgentCryptoTrading.Core")]
 [assembly: System.Reflection.AssemblyTitleAttribute("AIAgentCryptoTrading.Core")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
