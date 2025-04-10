@@ -33,6 +33,29 @@
             "related": ".pdb;.xml"
           }
         }
+      },
+      "AIAgentCryptoTrading.Backtesting/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v9.0",
+        "dependencies": {
+          "AIAgentCryptoTrading.Core": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/AIAgentCryptoTrading.Backtesting.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/AIAgentCryptoTrading.Backtesting.dll": {}
+        }
+      },
+      "AIAgentCryptoTrading.Core/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v9.0",
+        "compile": {
+          "bin/placeholder/AIAgentCryptoTrading.Core.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/AIAgentCryptoTrading.Core.dll": {}
+        }
       }
     }
   },
@@ -67,10 +90,22 @@
         "microsoft.openapi.1.6.17.nupkg.sha512",
         "microsoft.openapi.nuspec"
       ]
+    },
+    "AIAgentCryptoTrading.Backtesting/1.0.0": {
+      "type": "project",
+      "path": "../AIAgentCryptoTrading.Backtesting/AIAgentCryptoTrading.Backtesting.csproj",
+      "msbuildProject": "../AIAgentCryptoTrading.Backtesting/AIAgentCryptoTrading.Backtesting.csproj"
+    },
+    "AIAgentCryptoTrading.Core/1.0.0": {
+      "type": "project",
+      "path": "../AIAgentCryptoTrading.Core/AIAgentCryptoTrading.Core.csproj",
+      "msbuildProject": "../AIAgentCryptoTrading.Core/AIAgentCryptoTrading.Core.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net9.0": [
+      "AIAgentCryptoTrading.Backtesting >= 1.0.0",
+      "AIAgentCryptoTrading.Core >= 1.0.0",
       "Microsoft.AspNetCore.OpenApi >= 9.0.1"
     ]
   },
@@ -105,7 +140,14 @@
       "frameworks": {
         "net9.0": {
           "targetAlias": "net9.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\Tri Uyen\\Desktop\\Ai_agentic\\AI_agent\\AIAgentCryptoTrading.Backtesting\\AIAgentCryptoTrading.Backtesting.csproj": {
+              "projectPath": "C:\\Users\\Tri Uyen\\Desktop\\Ai_agentic\\AI_agent\\AIAgentCryptoTrading.Backtesting\\AIAgentCryptoTrading.Backtesting.csproj"
+            },
+            "C:\\Users\\Tri Uyen\\Desktop\\Ai_agentic\\AI_agent\\AIAgentCryptoTrading.Core\\AIAgentCryptoTrading.Core.csproj": {
+              "projectPath": "C:\\Users\\Tri Uyen\\Desktop\\Ai_agentic\\AI_agent\\AIAgentCryptoTrading.Core\\AIAgentCryptoTrading.Core.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
