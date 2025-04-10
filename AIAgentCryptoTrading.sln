@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AIAgentCryptoTrading.Api", "AIAgentCryptoTrading.Api\AIAgentCryptoTrading.Api.csproj", "{058D3EFD-E0FC-4436-9F7D-90E1983B233D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AIAgentCryptoTrading.Core", "AIAgentCryptoTrading.Core\AIAgentCryptoTrading.Core.csproj", "{A1CE89DF-D2EB-4625-A6C3-3C1CA29DC2AD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AIAgentCryptoTrading.Backtesting", "AIAgentCryptoTrading.Backtesting\AIAgentCryptoTrading.Backtesting.csproj", "{069CCF2A-E544-4A59-8DFF-952107E831A1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{058D3EFD-E0FC-4436-9F7D-90E1983B233D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{058D3EFD-E0FC-4436-9F7D-90E1983B233D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{058D3EFD-E0FC-4436-9F7D-90E1983B233D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{058D3EFD-E0FC-4436-9F7D-90E1983B233D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A1CE89DF-D2EB-4625-A6C3-3C1CA29DC2AD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A1CE89DF-D2EB-4625-A6C3-3C1CA29DC2AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A1CE89DF-D2EB-4625-A6C3-3C1CA29DC2AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A1CE89DF-D2EB-4625-A6C3-3C1CA29DC2AD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{069CCF2A-E544-4A59-8DFF-952107E831A1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{069CCF2A-E544-4A59-8DFF-952107E831A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{069CCF2A-E544-4A59-8DFF-952107E831A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{069CCF2A-E544-4A59-8DFF-952107E831A1}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
