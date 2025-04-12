@@ -1,0 +1,12 @@
+{
+  "Version": 1,
+  "Hash": "0ufE5F8DepEDZFwUdpiufD026nm0992wVDpoQkSH09w=",
+  "Source": "AIAgentCryptoTrading.Api",
+  "BasePath": "_content/AIAgentCryptoTrading.Api",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": [],
+  "Endpoints": []
+}
