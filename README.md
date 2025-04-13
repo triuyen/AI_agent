@@ -32,5 +32,4 @@ AIAgentCryptoTrading/
 */
 # to be added later :
 dotnet new classlib -n AIAgentCryptoTrading.PatternRecognition
-dotnet new classlib -n AIAgentCryptoTrading.DataCollector
 dotnet new classlib -n AIAgentCryptoTrading.SentimentAnalysis
