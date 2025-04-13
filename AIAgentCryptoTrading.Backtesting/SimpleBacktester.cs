@@ -5,7 +5,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-
 namespace AIAgentCryptoTrading.Backtesting
 {
     public class SimpleBacktester : IBacktester
