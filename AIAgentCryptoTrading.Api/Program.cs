@@ -46,7 +46,7 @@ app.UseAuthorization();
 app.MapControllers();
 // Redirect root to Swagger UI
 app.MapGet("/", context => {
-    context.Response.Redirect("/swagger");
+    context.Response.Redirect("/swagger/index.html");
     return Task.CompletedTask;
 });
 

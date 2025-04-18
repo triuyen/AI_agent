@@ -160,6 +160,20 @@
         "runtime": {
           "bin/placeholder/AIAgentCryptoTrading.DataCollector.dll": {}
         }
+      },
+      "AIAgentCryptoTrading.StrategyEngine/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v9.0",
+        "dependencies": {
+          "AIAgentCryptoTrading.Core": "1.0.0",
+          "AIAgentCryptoTrading.DataCollector": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/AIAgentCryptoTrading.StrategyEngine.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/AIAgentCryptoTrading.StrategyEngine.dll": {}
+        }
       }
     }
   },
@@ -547,6 +561,11 @@
       "type": "project",
       "path": "../AIAgentCryptoTrading.DataCollector/AIAgentCryptoTrading.DataCollector.csproj",
       "msbuildProject": "../AIAgentCryptoTrading.DataCollector/AIAgentCryptoTrading.DataCollector.csproj"
+    },
+    "AIAgentCryptoTrading.StrategyEngine/1.0.0": {
+      "type": "project",
+      "path": "../AIAgentCryptoTrading.StrategyEngine/AIAgentCryptoTrading.StrategyEngine.csproj",
+      "msbuildProject": "../AIAgentCryptoTrading.StrategyEngine/AIAgentCryptoTrading.StrategyEngine.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -554,6 +573,7 @@
       "AIAgentCryptoTrading.Backtesting >= 1.0.0",
       "AIAgentCryptoTrading.Core >= 1.0.0",
       "AIAgentCryptoTrading.DataCollector >= 1.0.0",
+      "AIAgentCryptoTrading.StrategyEngine >= 1.0.0",
       "Microsoft.AspNetCore.OpenApi >= 9.0.1",
       "Swashbuckle.AspNetCore >= 8.1.1"
     ]
@@ -598,6 +618,9 @@
             },
             "C:\\Users\\Tri Uyen\\Desktop\\Ai_agentic\\AI_agent\\AIAgentCryptoTrading.DataCollector\\AIAgentCryptoTrading.DataCollector.csproj": {
               "projectPath": "C:\\Users\\Tri Uyen\\Desktop\\Ai_agentic\\AI_agent\\AIAgentCryptoTrading.DataCollector\\AIAgentCryptoTrading.DataCollector.csproj"
+            },
+            "C:\\Users\\Tri Uyen\\Desktop\\Ai_agentic\\AI_agent\\AIAgentCryptoTrading.StrategyEngine\\AIAgentCryptoTrading.StrategyEngine.csproj": {
+              "projectPath": "C:\\Users\\Tri Uyen\\Desktop\\Ai_agentic\\AI_agent\\AIAgentCryptoTrading.StrategyEngine\\AIAgentCryptoTrading.StrategyEngine.csproj"
             }
           }
         }
