@@ -51,6 +51,21 @@ Liquid assets: Assets with high trading volume and liquidity allow for efficient
 Longer timeframes: Moving average strategies typically perform better on longer timeframes (daily, weekly) than on very short timeframes (minutes, hours) which tend to be noisier.
 Markets with cyclical or momentum characteristics: Assets that tend to maintain momentum once a trend is established (like many cryptocurrencies during bull markets) are ideal for this strategy.
 
+# second compelmentary strategy : 
+Mean Reversion Strategy
+Core Strategy Logic:
+
+Identify overbought/oversold conditions using oscillators (RSI, Stochastic, Bollinger Bands)
+Enter trades when price deviates significantly from its average, anticipating a return to the mean
+Exit when price returns to its average value or a profit target is reached
+
+Ideal Market Environment:
+
+Sideways/range-bound markets: Performs best when prices oscillate within a defined range
+High volatility with clear boundaries: Benefits from price swings without sustained directional movement
+Established support/resistance levels: Creates natural reversal points for mean reversion
+Short to medium timeframes: Often works better on shorter timeframes where ranges are more defined
+Markets with regular corrections: Assets that tend to correct after significant moves rather than trending continuously
 
 link : (to be removed in the end)
 https://colab.research.google.com/drive/10Qb11tN7z0Vbtiw0kQPdGFlrGcJVqk7A?usp=sharing
