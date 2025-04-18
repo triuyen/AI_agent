@@ -1,0 +1,16 @@
+C:\Users\Tri Uyen\Desktop\Ai_agentic\AI_agent\AIAgentCryptoTrading.DataCollector\bin\Debug\net9.0\AIAgentCryptoTrading.DataCollector.deps.json
+C:\Users\Tri Uyen\Desktop\Ai_agentic\AI_agent\AIAgentCryptoTrading.DataCollector\bin\Debug\net9.0\AIAgentCryptoTrading.DataCollector.dll
+C:\Users\Tri Uyen\Desktop\Ai_agentic\AI_agent\AIAgentCryptoTrading.DataCollector\bin\Debug\net9.0\AIAgentCryptoTrading.DataCollector.pdb
+C:\Users\Tri Uyen\Desktop\Ai_agentic\AI_agent\AIAgentCryptoTrading.DataCollector\bin\Debug\net9.0\AIAgentCryptoTrading.Core.dll
+C:\Users\Tri Uyen\Desktop\Ai_agentic\AI_agent\AIAgentCryptoTrading.DataCollector\bin\Debug\net9.0\AIAgentCryptoTrading.Core.pdb
+C:\Users\Tri Uyen\Desktop\Ai_agentic\AI_agent\AIAgentCryptoTrading.DataCollector\obj\Debug\net9.0\AIAgentCryptoTrading.DataCollector.csproj.AssemblyReference.cache
+C:\Users\Tri Uyen\Desktop\Ai_agentic\AI_agent\AIAgentCryptoTrading.DataCollector\obj\Debug\net9.0\AIAgentCryptoTrading.DataCollector.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Tri Uyen\Desktop\Ai_agentic\AI_agent\AIAgentCryptoTrading.DataCollector\obj\Debug\net9.0\AIAgentCryptoTrading.DataCollector.AssemblyInfoInputs.cache
+C:\Users\Tri Uyen\Desktop\Ai_agentic\AI_agent\AIAgentCryptoTrading.DataCollector\obj\Debug\net9.0\AIAgentCryptoTrading.DataCollector.AssemblyInfo.cs
+C:\Users\Tri Uyen\Desktop\Ai_agentic\AI_agent\AIAgentCryptoTrading.DataCollector\obj\Debug\net9.0\AIAgentCryptoTrading.DataCollector.csproj.CoreCompileInputs.cache
+C:\Users\Tri Uyen\Desktop\Ai_agentic\AI_agent\AIAgentCryptoTrading.DataCollector\obj\Debug\net9.0\AIAgentCryptoTrading.DataCollector.sourcelink.json
+C:\Users\Tri Uyen\Desktop\Ai_agentic\AI_agent\AIAgentCryptoTrading.DataCollector\obj\Debug\net9.0\AIAgentC.AC570554.Up2Date
+C:\Users\Tri Uyen\Desktop\Ai_agentic\AI_agent\AIAgentCryptoTrading.DataCollector\obj\Debug\net9.0\AIAgentCryptoTrading.DataCollector.dll
+C:\Users\Tri Uyen\Desktop\Ai_agentic\AI_agent\AIAgentCryptoTrading.DataCollector\obj\Debug\net9.0\refint\AIAgentCryptoTrading.DataCollector.dll
+C:\Users\Tri Uyen\Desktop\Ai_agentic\AI_agent\AIAgentCryptoTrading.DataCollector\obj\Debug\net9.0\AIAgentCryptoTrading.DataCollector.pdb
+C:\Users\Tri Uyen\Desktop\Ai_agentic\AI_agent\AIAgentCryptoTrading.DataCollector\obj\Debug\net9.0\ref\AIAgentCryptoTrading.DataCollector.dll

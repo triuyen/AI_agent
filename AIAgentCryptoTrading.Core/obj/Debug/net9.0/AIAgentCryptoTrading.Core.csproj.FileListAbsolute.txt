@@ -1,0 +1,12 @@
+C:\Users\Tri Uyen\Desktop\Ai_agentic\AI_agent\AIAgentCryptoTrading.Core\bin\Debug\net9.0\AIAgentCryptoTrading.Core.deps.json
+C:\Users\Tri Uyen\Desktop\Ai_agentic\AI_agent\AIAgentCryptoTrading.Core\bin\Debug\net9.0\AIAgentCryptoTrading.Core.dll
+C:\Users\Tri Uyen\Desktop\Ai_agentic\AI_agent\AIAgentCryptoTrading.Core\bin\Debug\net9.0\AIAgentCryptoTrading.Core.pdb
+C:\Users\Tri Uyen\Desktop\Ai_agentic\AI_agent\AIAgentCryptoTrading.Core\obj\Debug\net9.0\AIAgentCryptoTrading.Core.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Tri Uyen\Desktop\Ai_agentic\AI_agent\AIAgentCryptoTrading.Core\obj\Debug\net9.0\AIAgentCryptoTrading.Core.AssemblyInfoInputs.cache
+C:\Users\Tri Uyen\Desktop\Ai_agentic\AI_agent\AIAgentCryptoTrading.Core\obj\Debug\net9.0\AIAgentCryptoTrading.Core.AssemblyInfo.cs
+C:\Users\Tri Uyen\Desktop\Ai_agentic\AI_agent\AIAgentCryptoTrading.Core\obj\Debug\net9.0\AIAgentCryptoTrading.Core.csproj.CoreCompileInputs.cache
+C:\Users\Tri Uyen\Desktop\Ai_agentic\AI_agent\AIAgentCryptoTrading.Core\obj\Debug\net9.0\AIAgentCryptoTrading.Core.sourcelink.json
+C:\Users\Tri Uyen\Desktop\Ai_agentic\AI_agent\AIAgentCryptoTrading.Core\obj\Debug\net9.0\AIAgentCryptoTrading.Core.dll
+C:\Users\Tri Uyen\Desktop\Ai_agentic\AI_agent\AIAgentCryptoTrading.Core\obj\Debug\net9.0\refint\AIAgentCryptoTrading.Core.dll
+C:\Users\Tri Uyen\Desktop\Ai_agentic\AI_agent\AIAgentCryptoTrading.Core\obj\Debug\net9.0\AIAgentCryptoTrading.Core.pdb
+C:\Users\Tri Uyen\Desktop\Ai_agentic\AI_agent\AIAgentCryptoTrading.Core\obj\Debug\net9.0\ref\AIAgentCryptoTrading.Core.dll

@@ -11,6 +11,15 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+// Add CORS configuration
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowReactApp",
+        builder => builder.WithOrigins("http://localhost:3000")
+                         .AllowAnyMethod()
+                         .AllowAnyHeader());
+});
+
 // Register services
 builder.Services.AddSingleton<IDataCollector, CryptoDataCollector>();
 builder.Services.AddScoped<IBacktester, SimpleBacktester>();
@@ -28,6 +37,9 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+//  CORS middleware 
+app.UseCors("AllowReactApp");
 
 app.UseAuthorization();
 

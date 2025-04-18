@@ -1,0 +1,16 @@
+C:\Users\Tri Uyen\Desktop\Ai_agentic\AI_agent\AIAgentCryptoTrading.Backtesting\bin\Debug\net9.0\AIAgentCryptoTrading.Backtesting.deps.json
+C:\Users\Tri Uyen\Desktop\Ai_agentic\AI_agent\AIAgentCryptoTrading.Backtesting\bin\Debug\net9.0\AIAgentCryptoTrading.Backtesting.dll
+C:\Users\Tri Uyen\Desktop\Ai_agentic\AI_agent\AIAgentCryptoTrading.Backtesting\bin\Debug\net9.0\AIAgentCryptoTrading.Backtesting.pdb
+C:\Users\Tri Uyen\Desktop\Ai_agentic\AI_agent\AIAgentCryptoTrading.Backtesting\bin\Debug\net9.0\AIAgentCryptoTrading.Core.dll
+C:\Users\Tri Uyen\Desktop\Ai_agentic\AI_agent\AIAgentCryptoTrading.Backtesting\bin\Debug\net9.0\AIAgentCryptoTrading.Core.pdb
+C:\Users\Tri Uyen\Desktop\Ai_agentic\AI_agent\AIAgentCryptoTrading.Backtesting\obj\Debug\net9.0\AIAgentCryptoTrading.Backtesting.csproj.AssemblyReference.cache
+C:\Users\Tri Uyen\Desktop\Ai_agentic\AI_agent\AIAgentCryptoTrading.Backtesting\obj\Debug\net9.0\AIAgentCryptoTrading.Backtesting.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Tri Uyen\Desktop\Ai_agentic\AI_agent\AIAgentCryptoTrading.Backtesting\obj\Debug\net9.0\AIAgentCryptoTrading.Backtesting.AssemblyInfoInputs.cache
+C:\Users\Tri Uyen\Desktop\Ai_agentic\AI_agent\AIAgentCryptoTrading.Backtesting\obj\Debug\net9.0\AIAgentCryptoTrading.Backtesting.AssemblyInfo.cs
+C:\Users\Tri Uyen\Desktop\Ai_agentic\AI_agent\AIAgentCryptoTrading.Backtesting\obj\Debug\net9.0\AIAgentCryptoTrading.Backtesting.csproj.CoreCompileInputs.cache
+C:\Users\Tri Uyen\Desktop\Ai_agentic\AI_agent\AIAgentCryptoTrading.Backtesting\obj\Debug\net9.0\AIAgentCryptoTrading.Backtesting.sourcelink.json
+C:\Users\Tri Uyen\Desktop\Ai_agentic\AI_agent\AIAgentCryptoTrading.Backtesting\obj\Debug\net9.0\AIAgentC.FBA8F3A1.Up2Date
+C:\Users\Tri Uyen\Desktop\Ai_agentic\AI_agent\AIAgentCryptoTrading.Backtesting\obj\Debug\net9.0\AIAgentCryptoTrading.Backtesting.dll
+C:\Users\Tri Uyen\Desktop\Ai_agentic\AI_agent\AIAgentCryptoTrading.Backtesting\obj\Debug\net9.0\refint\AIAgentCryptoTrading.Backtesting.dll
+C:\Users\Tri Uyen\Desktop\Ai_agentic\AI_agent\AIAgentCryptoTrading.Backtesting\obj\Debug\net9.0\AIAgentCryptoTrading.Backtesting.pdb
+C:\Users\Tri Uyen\Desktop\Ai_agentic\AI_agent\AIAgentCryptoTrading.Backtesting\obj\Debug\net9.0\ref\AIAgentCryptoTrading.Backtesting.dll
