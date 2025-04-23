@@ -1,11 +1,12 @@
 using AIAgentCryptoTrading.Core.Interfaces;
 using AIAgentCryptoTrading.Core.Models;
-using AIAgentCryptoTrading.DataCollector.Services;
+// using AIAgentCryptoTrading.DataCollector.Services;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Linq;
+using AIAgentCryptoTrading.DataCollector;
 
 namespace AIAgentCryptoTrading.Api.Controllers
 {
@@ -14,12 +15,12 @@ namespace AIAgentCryptoTrading.Api.Controllers
     public class MarketDataController : ControllerBase
     {
         private readonly IDataCollector _dataCollector;
-        private readonly CoinGeckoDataProvider _geckoProvider;
+        private readonly CoinGeckoDataCollector _geckoCollector;
         
-        public MarketDataController(IDataCollector dataCollector)
+        public MarketDataController(IDataCollector dataCollector, CoinGeckoDataCollector geckoCollector)
         {
             _dataCollector = dataCollector;
-            _geckoProvider = new CoinGeckoDataProvider();
+            _geckoCollector = geckoCollector;
         }
         
         [HttpGet("{symbol}")]
@@ -29,61 +30,74 @@ namespace AIAgentCryptoTrading.Api.Controllers
             [FromQuery] int limit = 100,
             [FromQuery] string source = "binance")
         {
+            // try
+            // {
+            //     if (source.ToLower() == "coingecko")
+            //     {
+            //         // Convert symbol to CoinGecko format
+            //         string coinId = TranslateSymbolToCoinId(symbol);
+            //         int days = CalculateDays(timeframe, limit);
+                    
+            //         // Use the provider to get data
+            //         var priceData = await _geckoProvider.GetHistoricalMarketDataAsync(coinId, "usd", days);
+                    
+            //         // Convert to list of CandleData
+            //         var candles = priceData
+            //             .Select(kvp => new CandleData
+            //             {
+            //                 Timestamp = kvp.Key,
+            //                 Open = (decimal)kvp.Value.Open,
+            //                 High = (decimal)kvp.Value.High,
+            //                 Low = (decimal)kvp.Value.Low,
+            //                 Close = (decimal)kvp.Value.Close,
+            //                 Volume = (decimal)kvp.Value.Volume
+            //             })
+            //             .OrderBy(c => c.Timestamp)
+            //             .Take(limit)
+            //             .ToList();
+                    
+            //         return Ok(candles);
+            //     }
+            //     else
+            //     {
+            //         // Use the standard data collector for Binance
+            //         var data = await _dataCollector.GetHistoricalDataAsync(symbol, timeframe, limit);
+            //         return Ok(data);
+            //     }
+            // }
+            // catch (Exception ex)
+            // {
+            //     return BadRequest($"Error getting market data: {ex.Message}");
+            // }
             try
             {
+                List<CandleData> data;
+                
+                // Select data source
                 if (source.ToLower() == "coingecko")
                 {
-                    // Convert symbol to CoinGecko format
-                    string coinId = TranslateSymbolToCoinId(symbol);
-                    int days = CalculateDays(timeframe, limit);
-                    
-                    // Use the provider to get data
-                    var priceData = await _geckoProvider.GetHistoricalMarketDataAsync(coinId, "usd", days);
-                    
-                    // Convert to list of CandleData
-                    var candles = priceData
-                        .Select(kvp => new CandleData
-                        {
-                            Timestamp = kvp.Key,
-                            Open = (decimal)kvp.Value.Open,
-                            High = (decimal)kvp.Value.High,
-                            Low = (decimal)kvp.Value.Low,
-                            Close = (decimal)kvp.Value.Close,
-                            Volume = (decimal)kvp.Value.Volume
-                        })
-                        .OrderBy(c => c.Timestamp)
-                        .Take(limit)
-                        .ToList();
-                    
-                    return Ok(candles);
+                    data = await _geckoCollector.GetHistoricalDataAsync(symbol, timeframe, limit);
                 }
                 else
                 {
-                    // Use the standard data collector for Binance
-                    var data = await _dataCollector.GetHistoricalDataAsync(symbol, timeframe, limit);
-                    return Ok(data);
+                    data = await _dataCollector.GetHistoricalDataAsync(symbol, timeframe, limit);
                 }
+                
+                return Ok(data);
             }
             catch (Exception ex)
             {
                 return BadRequest($"Error getting market data: {ex.Message}");
             }
-        }
+            }
         
         [HttpGet("top")]
         public async Task<ActionResult<List<string>>> GetTopCryptos([FromQuery] int limit = 10)
         {
             try
             {
-                // Since your provider doesn't have a GetTopCryptos method,
-                // return some default cryptocurrencies
-                var topCryptos = new List<string>
-                {
-                    "BTCUSDT", "ETHUSDT", "BNBUSDT", "SOLUSDT", "ADAUSDT",
-                    "XRPUSDT", "DOGEUSDT", "DOTUSDT", "AVAXUSDT", "MATICUSDT"
-                };
-                
-                return Ok(topCryptos.Take(limit).ToList());
+                var topCryptos = await _geckoCollector.GetTopCryptos(limit);
+                return Ok(topCryptos);
             }
             catch (Exception ex)
             {

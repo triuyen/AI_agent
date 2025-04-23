@@ -1,26 +1,26 @@
-
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using System.Linq;
 using AIAgentCryptoTrading.Core.Models;
-using AIAgentCryptoTrading.DataCollector.Services;
+using AIAgentCryptoTrading.DataCollector;
 using AIAgentCryptoTrading.StrategyEngine.Strategies;
 
 namespace AIAgentCryptoTrading.StrategyEngine.Services
 {
     public class MeanReversionStrategyService
     {
-        private readonly CoinGeckoDataProvider _dataProvider;
+        private readonly CoinGeckoDataCollector _dataProvider;
         
         public MeanReversionStrategyService()
         {
-            _dataProvider = new CoinGeckoDataProvider();
+            _dataProvider = new CoinGeckoDataCollector();
         }
         
         public async Task<Dictionary<DateTime, PriceData>> ExecuteStrategyAsync(
-            string coinId, 
-            string currency, 
-            int days,
+            string symbol, 
+            string timeframe = "1d",
+            int limit = 365,
             int rsiPeriod = 14,
             double rsiOversold = 30,
             double rsiOverbought = 70,
@@ -28,13 +28,28 @@ namespace AIAgentCryptoTrading.StrategyEngine.Services
             double bbStd = 2,
             bool exitMiddle = true)
         {
-            // Get price data
-            var priceData = await _dataProvider.GetOHLCDataAsync(coinId, currency, days.ToString());
+            // Get price data using the available method
+            var candleData = await _dataProvider.GetHistoricalDataAsync(symbol, timeframe, limit);
             
-            // Fall back to market data if OHLC unavailable
+            // Convert CandleData to the format expected by your strategy
+            var priceData = new Dictionary<DateTime, PriceData>();
+            
+            foreach (var candle in candleData)
+            {
+                priceData[candle.Timestamp] = new PriceData
+                {
+                    Open = (double)candle.Open,
+                    High = (double)candle.High,
+                    Low = (double)candle.Low,
+                    Close = (double)candle.Close,
+                    Volume = (double)candle.Volume
+                };
+            }
+            
+            // Check if we have data
             if (priceData.Count == 0)
             {
-                priceData = await _dataProvider.GetHistoricalMarketDataAsync(coinId, currency, days);
+                return new Dictionary<DateTime, PriceData>();
             }
             
             // Apply strategy

@@ -22,6 +22,8 @@ builder.Services.AddCors(options =>
 
 // Register services
 builder.Services.AddSingleton<IDataCollector, CryptoDataCollector>();
+// In Program.cs
+builder.Services.AddScoped<CoinGeckoDataCollector>();
 builder.Services.AddScoped<IBacktester, SimpleBacktester>();
 
 // Add HTTP client

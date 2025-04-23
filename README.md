@@ -1,26 +1,23 @@
 # AI_agent
 Ai agent Hackathon microsoft 2025
 
-
 # project idea : 
 AI agent (trading bot) that would readjust strategy and algos using RL 
-build a HFT simulator (maybe)
-Crypto binance donnée (crypto) l’order book. 
-SVR ( ML)
+build a HFT simulator
+Geckocoin (data API used)
+Random forest Classifier
 Linear Regression
 
 Main_doc:
 https://docs.google.com/document/d/1nM4O-MDaC8PKeEep85yH2aPi-AFLXG019XNaknRmLec/edit?tab=t.0#heading=h.o4rytw2azsu7
 
-version of .NET used : 9.0.102
+version of .NET used : 9.0.102 (make sure you are on right verion)
 
-/*
  * Crypto Trading AI System Architecture
- * 
  * This solution structure outlines a high-performance C# implementation
  * of an AI-driven cryptocurrency trading system with pattern recognition,
  * sentiment analysis, and reinforcement learning capabilities.
- */
+ 
 
 // Project structure overview:
 /*
@@ -69,7 +66,8 @@ Established support/resistance levels: Creates natural reversal points for mean 
 Short to medium timeframes: Often works better on shorter timeframes where ranges are more defined
 Markets with regular corrections: Assets that tend to correct after significant moves rather than trending continuously
 
-## Combine traditional strategy rules with a lightweight machine learning model that:
+## Model Used for training
+### Combine traditional strategy rules with a lightweight machine learning model that:
 Detects the current market regime (trending vs. range-bound)
 Selects the appropriate strategy based on the regime
 Applies standard entry/exit rules for that strategy
