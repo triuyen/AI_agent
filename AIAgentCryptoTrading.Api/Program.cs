@@ -7,7 +7,6 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllers();
 
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
@@ -15,13 +14,17 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowReactApp",
-        builder => builder.WithOrigins("http://localhost:3000")
-                         .AllowAnyMethod()
-                         .AllowAnyHeader());
+        builder => builder
+        .WithOrigins("http://localhost:3000")
+        .AllowAnyMethod()
+        .AllowCredentials()
+        .AllowAnyHeader());
 });
 
 // Register services
 builder.Services.AddSingleton<IDataCollector, CryptoDataCollector>();
+// In Program.cs
+builder.Services.AddScoped<CoinGeckoDataCollector>();
 builder.Services.AddScoped<IBacktester, SimpleBacktester>();
 
 // Add HTTP client
@@ -46,7 +49,7 @@ app.UseAuthorization();
 app.MapControllers();
 // Redirect root to Swagger UI
 app.MapGet("/", context => {
-    context.Response.Redirect("/swagger");
+    context.Response.Redirect("/swagger/index.html");
     return Task.CompletedTask;
 });
 

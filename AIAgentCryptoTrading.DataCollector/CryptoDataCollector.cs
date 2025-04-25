@@ -2,6 +2,7 @@
 using AIAgentCryptoTrading.Core.Models;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Net.Http;
 using System.Net.Http.Json;
 using System.Threading.Tasks;
@@ -33,16 +34,24 @@ namespace AIAgentCryptoTrading.DataCollector
                 
                 foreach (var item in jsonArray)
                 {
+                    // var candle = new CandleData
+                    // {
+                    //     Timestamp = DateTimeOffset.FromUnixTimeMilliseconds(item[0].Value<long>()).DateTime,
+                    //     Open = decimal.Parse(item[1].Value<string>()),
+                    //     High = decimal.Parse(item[2].Value<string>()),
+                    //     Low = decimal.Parse(item[3].Value<string>()),
+                    //     Close = decimal.Parse(item[4].Value<string>()),
+                    //     Volume = decimal.Parse(item[5].Value<string>())
+                    // };
                     var candle = new CandleData
                     {
                         Timestamp = DateTimeOffset.FromUnixTimeMilliseconds(item[0].Value<long>()).DateTime,
-                        Open = decimal.Parse(item[1].Value<string>()),
-                        High = decimal.Parse(item[2].Value<string>()),
-                        Low = decimal.Parse(item[3].Value<string>()),
-                        Close = decimal.Parse(item[4].Value<string>()),
-                        Volume = decimal.Parse(item[5].Value<string>())
+                        Open = decimal.Parse(item[1].Value<string>(), CultureInfo.InvariantCulture),
+                        High = decimal.Parse(item[2].Value<string>(), CultureInfo.InvariantCulture),
+                        Low = decimal.Parse(item[3].Value<string>(), CultureInfo.InvariantCulture),
+                        Close = decimal.Parse(item[4].Value<string>(), CultureInfo.InvariantCulture),
+                        Volume = decimal.Parse(item[5].Value<string>(), CultureInfo.InvariantCulture)
                     };
-                    
                     candles.Add(candle);
                 }
                 

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { 
   AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, 
-  ResponsiveContainer, ReferenceLine, ReferenceArea 
+  ResponsiveContainer, ReferenceLine 
 } from 'recharts';
 import api from '../services/api';
 

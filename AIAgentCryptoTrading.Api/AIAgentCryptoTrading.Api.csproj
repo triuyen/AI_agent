@@ -15,6 +15,7 @@
     <ProjectReference Include="..\AIAgentCryptoTrading.Core\AIAgentCryptoTrading.Core.csproj" />
     <ProjectReference Include="..\AIAgentCryptoTrading.Backtesting\AIAgentCryptoTrading.Backtesting.csproj" />
     <ProjectReference Include="..\AIAgentCryptoTrading.DataCollector\AIAgentCryptoTrading.DataCollector.csproj" />
+    <ProjectReference Include="..\AIAgentCryptoTrading.StrategyEngine\AIAgentCryptoTrading.StrategyEngine.csproj" />
   </ItemGroup>
   
 
