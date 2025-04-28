@@ -213,7 +213,7 @@ const ModelTraining = () => {
     
     return data;
   }, [selectedCrypto]); // Add selectedCrypto as a dependency
-  
+
   // Fetch market data
   useEffect(() => {
     const fetchMarketData = async () => {
@@ -725,7 +725,7 @@ const ModelTraining = () => {
         
         {!loading && !error && (
           <div className="charts-container">
-            <Grid container spacing={3}>
+            <Grid container spacing={3} direction="row">
               <Grid item xs={12} md={6}>
                 <Card>
                   <CardHeader title="Training & Validation Loss" />
@@ -841,7 +841,7 @@ const ModelTraining = () => {
       
       {/* Trading Strategies Tab */}
       <TabPanel value={currentTab} index={1}>
-        <Grid container spacing={3}>
+        <Grid container spacing={3} direction="column">
           <Grid item xs={12}>
             <Card>
               <CardContent>
@@ -1132,7 +1132,7 @@ const ModelTraining = () => {
       
       {/* Performance Analysis Tab */}
       <TabPanel value={currentTab} index={2}>
-        <Grid container spacing={3}>
+        <Grid container spacing={3} direction="column">
           <Grid item xs={12}>
             <Card>
               <CardContent>
@@ -1214,7 +1214,7 @@ const ModelTraining = () => {
       {/* Market Data Tab */}
       <TabPanel value={currentTab} index={3}>
         <div className="market-data-section">
-          <Grid container spacing={3}>
+          <Grid container spacing={3} direction="column">
             <Grid item xs={12}>
               <Card>
                 <CardContent>

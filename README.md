@@ -8,6 +8,8 @@ Geckocoin (data API used)
 Random forest Classifier
 Linear Regression
 
+Licence :
+
 Main_doc:
 https://docs.google.com/document/d/1nM4O-MDaC8PKeEep85yH2aPi-AFLXG019XNaknRmLec/edit?tab=t.0#heading=h.o4rytw2azsu7
 

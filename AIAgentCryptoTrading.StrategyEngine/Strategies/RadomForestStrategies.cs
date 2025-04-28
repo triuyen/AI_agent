@@ -5,6 +5,7 @@ using System.IO;
 using System.Threading.Tasks;
 using Microsoft.ML;
 using Microsoft.ML.Data;
+using AIAgentCryptoTrading.StrategyEngine.Indicators;
 using Microsoft.ML.Trainers.FastTree;
 using System.Text.Json;
 
@@ -200,29 +201,7 @@ namespace AIAgentCryptoTrading.StrategyEngine
         /// </summary>
         public static float[] CalculateSMA(float[] prices, int period)
         {
-            if (prices == null || prices.Length < period)
-                return Array.Empty<float>();
-                
-            var sma = new float[prices.Length];
-            
-            for (int i = 0; i < prices.Length; i++)
-            {
-                if (i < period - 1)
-                {
-                    sma[i] = float.NaN;
-                    continue;
-                }
-                
-                float sum = 0;
-                for (int j = 0; j < period; j++)
-                {
-                    sum += prices[i - j];
-                }
-                
-                sma[i] = sum / period;
-            }
-            
-            return sma;
+            return TechnicalIndicators.SMA(prices, period);
         }
         
         /// <summary>
@@ -230,54 +209,7 @@ namespace AIAgentCryptoTrading.StrategyEngine
         /// </summary>
         public static float[] CalculateRSI(float[] prices, int period = 14)
         {
-            if (prices == null || prices.Length <= period)
-                return Array.Empty<float>();
-                
-            var rsi = new float[prices.Length];
-            var gains = new float[prices.Length];
-            var losses = new float[prices.Length];
-            
-            // Calculate price changes
-            for (int i = 1; i < prices.Length; i++)
-            {
-                float change = prices[i] - prices[i - 1];
-                gains[i] = Math.Max(0, change);
-                losses[i] = Math.Max(0, -change);
-            }
-            
-            // Calculate initial averages
-            float avgGain = gains.Skip(1).Take(period).Average();
-            float avgLoss = losses.Skip(1).Take(period).Average();
-            
-            // Fill in RSI values
-            for (int i = 0; i < period; i++)
-            {
-                rsi[i] = float.NaN;
-            }
-            
-            // Calculate first RSI
-            if (avgLoss == 0) rsi[period] = 100;
-            else
-            {
-                float rs = avgGain / avgLoss;
-                rsi[period] = 100 - (100 / (1 + rs));
-            }
-            
-            // Calculate remaining RSI values using Wilder's smoothing method
-            for (int i = period + 1; i < prices.Length; i++)
-            {
-                avgGain = ((avgGain * (period - 1)) + gains[i]) / period;
-                avgLoss = ((avgLoss * (period - 1)) + losses[i]) / period;
-                
-                if (avgLoss == 0) rsi[i] = 100;
-                else
-                {
-                    float rs = avgGain / avgLoss;
-                    rsi[i] = 100 - (100 / (1 + rs));
-                }
-            }
-            
-            return rsi;
+            return TechnicalIndicators.RSI(prices, period);
         }
         
         /// <summary>
@@ -285,71 +217,20 @@ namespace AIAgentCryptoTrading.StrategyEngine
         /// </summary>
         public static (float[] upper, float[] middle, float[] lower) CalculateBollingerBands(float[] prices, int period = 20, float stdDevMultiplier = 2.0f)
         {
-            if (prices == null || prices.Length < period)
-                return (Array.Empty<float>(), Array.Empty<float>(), Array.Empty<float>());
-                
-            var middle = CalculateSMA(prices, period);
-            var upper = new float[prices.Length];
-            var lower = new float[prices.Length];
-            
-            for (int i = period - 1; i < prices.Length; i++)
-            {
-                float sum = 0;
-                for (int j = 0; j < period; j++)
-                {
-                    float deviation = prices[i - j] - middle[i];
-                    sum += deviation * deviation;
-                }
-                
-                float stdDev = (float)Math.Sqrt(sum / period);
-                upper[i] = middle[i] + (stdDevMultiplier * stdDev);
-                lower[i] = middle[i] - (stdDevMultiplier * stdDev);
-            }
-            
-            return (upper, middle, lower);
+            return TechnicalIndicators.BollingerBands(prices, period, stdDevMultiplier);
         }
-        
+
+
         /// <summary>
         /// Calculate Moving Average Convergence Divergence (MACD)
         /// </summary>
-        public static (float[] macd, float[] signal, float[] histogram) CalculateMACD(float[] prices, int fastPeriod = 12, int slowPeriod = 26, int signalPeriod = 9)
+        public static (float[] macd, float[] signal, float[] histogram) CalculateMACD(
+            float[] prices, 
+            int fastPeriod = 12, 
+            int slowPeriod = 26, 
+            int signalPeriod = 9)
         {
-            if (prices == null || prices.Length < Math.Max(fastPeriod, slowPeriod) + signalPeriod)
-                return (Array.Empty<float>(), Array.Empty<float>(), Array.Empty<float>());
-                
-            var fastEMA = CalculateEMA(prices, fastPeriod);
-            var slowEMA = CalculateEMA(prices, slowPeriod);
-            
-            var macd = new float[prices.Length];
-            
-            for (int i = 0; i < prices.Length; i++)
-            {
-                if (float.IsNaN(fastEMA[i]) || float.IsNaN(slowEMA[i]))
-                {
-                    macd[i] = float.NaN;
-                }
-                else
-                {
-                    macd[i] = fastEMA[i] - slowEMA[i];
-                }
-            }
-            
-            var signal = CalculateEMA(macd, signalPeriod);
-            var histogram = new float[prices.Length];
-            
-            for (int i = 0; i < prices.Length; i++)
-            {
-                if (float.IsNaN(macd[i]) || float.IsNaN(signal[i]))
-                {
-                    histogram[i] = float.NaN;
-                }
-                else
-                {
-                    histogram[i] = macd[i] - signal[i];
-                }
-            }
-            
-            return (macd, signal, histogram);
+            return TechnicalIndicators.MACD(prices, fastPeriod, slowPeriod, signalPeriod);
         }
         
         /// <summary>
@@ -357,138 +238,30 @@ namespace AIAgentCryptoTrading.StrategyEngine
         /// </summary>
         public static float[] CalculateEMA(float[] prices, int period)
         {
-            if (prices == null || prices.Length < period)
-                return Array.Empty<float>();
-                
-            var ema = new float[prices.Length];
-            float multiplier = 2.0f / (period + 1);
-            
-            // Initialize EMA with SMA
-            float initialSma = 0;
-            for (int i = 0; i < period; i++)
-            {
-                ema[i] = float.NaN;
-                initialSma += prices[i];
-            }
-            initialSma /= period;
-            
-            ema[period - 1] = initialSma;
-            
-            // Calculate EMA
-            for (int i = period; i < prices.Length; i++)
-            {
-                ema[i] = (prices[i] - ema[i - 1]) * multiplier + ema[i - 1];
-            }
-            
-            return ema;
+            return TechnicalIndicators.EMA(prices, period);
         }
-        
+
         /// <summary>
         /// Detect Moving Average Crossovers
         /// </summary>
         public static int[] DetectMACrossover(float[] shortMA, float[] longMA)
         {
-            if (shortMA == null || longMA == null || shortMA.Length != longMA.Length)
-                return Array.Empty<int>();
-                
-            var signals = new int[shortMA.Length];
-            
-            // First point can't determine a crossover
-            for (int i = 0; i < Math.Min(signals.Length, 1); i++)
-            {
-                signals[i] = 0;
-            }
-            
-            // Detect crossovers
-            for (int i = 1; i < shortMA.Length; i++)
-            {
-                if (float.IsNaN(shortMA[i]) || float.IsNaN(longMA[i]) || 
-                    float.IsNaN(shortMA[i-1]) || float.IsNaN(longMA[i-1]))
-                {
-                    signals[i] = 0;
-                    continue;
-                }
-                
-                // Bullish crossover: short MA crosses above long MA
-                if (shortMA[i] > longMA[i] && shortMA[i-1] <= longMA[i-1])
-                {
-                    signals[i] = 1; // Buy signal
-                }
-                // Bearish crossover: short MA crosses below long MA
-                else if (shortMA[i] < longMA[i] && shortMA[i-1] >= longMA[i-1])
-                {
-                    signals[i] = -1; // Sell signal
-                }
-                else
-                {
-                    signals[i] = 0; // No crossover
-                }
-            }
-            
-            return signals;
+            return TechnicalIndicators.MACrossover(shortMA, longMA);
         }
-        
         /// <summary>
         /// Calculate momentum
         /// </summary>
         public static float[] CalculateMomentum(float[] prices, int period)
         {
-            if (prices == null || prices.Length <= period)
-                return Array.Empty<float>();
-                
-            var momentum = new float[prices.Length];
-            
-            for (int i = 0; i < period; i++)
-            {
-                momentum[i] = float.NaN;
-            }
-            
-            for (int i = period; i < prices.Length; i++)
-            {
-                momentum[i] = prices[i] / prices[i - period] - 1;
-            }
-            
-            return momentum;
+            return TechnicalIndicators.Momentum(prices, period);
         }
-        
+
         /// <summary>
         /// Calculate volatility (standard deviation)
         /// </summary>
         public static float[] CalculateVolatility(float[] prices, int period)
         {
-            if (prices == null || prices.Length < period)
-                return Array.Empty<float>();
-                
-            var volatility = new float[prices.Length];
-            
-            for (int i = 0; i < period - 1; i++)
-            {
-                volatility[i] = float.NaN;
-            }
-            
-            for (int i = period - 1; i < prices.Length; i++)
-            {
-                float sum = 0;
-                float mean = 0;
-                
-                // Calculate mean
-                for (int j = 0; j < period; j++)
-                {
-                    mean += prices[i - j];
-                }
-                mean /= period;
-                
-                // Calculate variance
-                for (int j = 0; j < period; j++)
-                {
-                    float deviation = prices[i - j] - mean;
-                    sum += deviation * deviation;
-                }
-                
-                volatility[i] = (float)Math.Sqrt(sum / period);
-            }
-            
-            return volatility;
+            return TechnicalIndicators.Volatility(prices, period);
         }
     }
 
@@ -543,15 +316,16 @@ namespace AIAgentCryptoTrading.StrategyEngine
                     continue;
                 }
                 
+               
                 // Extract price array
                 var prices = cryptoData.Select(d => d.Price).ToArray();
                 
-                // Calculate indicators
-                var shortMA = TechnicalIndicatorService.CalculateSMA(prices, _shortMAPeriod);
-                var longMA = TechnicalIndicatorService.CalculateSMA(prices, _longMAPeriod);
-                var rsi = TechnicalIndicatorService.CalculateRSI(prices, _rsiPeriod);
-                var (upperBB, middleBB, lowerBB) = TechnicalIndicatorService.CalculateBollingerBands(prices);
-                var crossoverSignals = TechnicalIndicatorService.DetectMACrossover(shortMA, longMA);
+                // Calculate indicators using TechnicalIndicators module
+                var shortMA = TechnicalIndicators.SMA(prices, _shortMAPeriod);
+                var longMA = TechnicalIndicators.SMA(prices, _longMAPeriod);
+                var rsi = TechnicalIndicators.RSI(prices, _rsiPeriod);
+                var (upperBB, middleBB, lowerBB) = TechnicalIndicators.BollingerBands(prices);
+                var crossoverSignals = TechnicalIndicators.MACrossover(shortMA, longMA);
                 
                 // Get Random Forest predictions
                 float[] rfPredictions;
@@ -800,23 +574,23 @@ namespace AIAgentCryptoTrading.StrategyEngine
                     var prices = cryptoData.Select(d => d.Price).ToArray();
                     
                     // Calculate all technical indicators
-                    var sma10 = TechnicalIndicatorService.CalculateSMA(prices, 10);
-                    var sma30 = TechnicalIndicatorService.CalculateSMA(prices, 30);
-                    var rsi14 = TechnicalIndicatorService.CalculateRSI(prices);
-                    var (upperBB, _, lowerBB) = TechnicalIndicatorService.CalculateBollingerBands(prices);
-                    var ma3 = TechnicalIndicatorService.CalculateSMA(prices, 3);
-                    var ma7 = TechnicalIndicatorService.CalculateSMA(prices, 7);
-                    var ma14 = TechnicalIndicatorService.CalculateSMA(prices, 14);
-                    var ma30 = TechnicalIndicatorService.CalculateSMA(prices, 30);
-                    var mom7 = TechnicalIndicatorService.CalculateMomentum(prices, 7);
-                    var mom14 = TechnicalIndicatorService.CalculateMomentum(prices, 14);
-                    var mom30 = TechnicalIndicatorService.CalculateMomentum(prices, 30);
-                    var vol7 = TechnicalIndicatorService.CalculateVolatility(prices, 7);
-                    var vol14 = TechnicalIndicatorService.CalculateVolatility(prices, 14);
-                    var vol30 = TechnicalIndicatorService.CalculateVolatility(prices, 30);
-                    var macross = TechnicalIndicatorService.DetectMACrossover(sma10, sma30);
+                    var sma10 = TechnicalIndicators.SMA(prices, 10);
+                    var sma30 = TechnicalIndicators.SMA(prices, 30);
+                    var rsi14 = TechnicalIndicators.RSI(prices);
+                    var (upperBB, _, lowerBB) = TechnicalIndicators.BollingerBands(prices);
+                    var ma3 = TechnicalIndicators.SMA(prices, 3);
+                    var ma7 = TechnicalIndicators.SMA(prices, 7);
+                    var ma14 = TechnicalIndicators.SMA(prices, 14);
+                    var ma30 = TechnicalIndicators.SMA(prices, 30);
+                    var mom7 = TechnicalIndicators.Momentum(prices, 7);
+                    var mom14 = TechnicalIndicators.Momentum(prices, 14);
+                    var mom30 = TechnicalIndicators.Momentum(prices, 30);
+                    var vol7 = TechnicalIndicators.Volatility(prices, 7);
+                    var vol14 = TechnicalIndicators.Volatility(prices, 14);
+                    var vol30 = TechnicalIndicators.Volatility(prices, 30);
+                    var macross = TechnicalIndicators.MACrossover(sma10, sma30);
                     
-                    // Create lag features
+                    // Create lag features 
                     for (int i = 0; i < cryptoData.Count; i++)
                     {
                         var input = cryptoData[i];

@@ -25,10 +25,8 @@ namespace AIAgentCryptoTrading.Api.Controllers
             try
             {
                 var result = await _backtester.RunBacktestAsync(
-                    request.Symbol,
-                    request.Strategy,
-                    request.StartDate,
-                    request.EndDate
+                    request.Symbol,request.Strategy,
+                    request.StartDate,request.EndDate
                 );
                 
                 return Ok(result);
