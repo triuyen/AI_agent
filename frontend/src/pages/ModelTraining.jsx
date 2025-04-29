@@ -840,8 +840,8 @@ const ModelTraining = () => {
       </TabPanel>
       
       {/* Trading Strategies Tab */}
-      <TabPanel value={currentTab} index={1}>
-        <Grid container spacing={3}>
+      <TabPanel value={currentTab} index={1} >
+        <Grid container spacing={3} direction="column">
           <Grid item xs={12}>
             <Card>
               <CardContent>
@@ -1214,7 +1214,7 @@ const ModelTraining = () => {
       {/* Market Data Tab */}
       <TabPanel value={currentTab} index={3}>
         <div className="market-data-section">
-          <Grid container spacing={3}>
+          <Grid container spacing={3} direction="column">
             <Grid item xs={12}>
               <Card>
                 <CardContent>
