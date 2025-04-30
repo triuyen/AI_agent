@@ -8,8 +8,6 @@ Geckocoin (data API used)
 Random forest Classifier
 Linear Regression
 
-Main_doc:
-https://docs.google.com/document/d/1nM4O-MDaC8PKeEep85yH2aPi-AFLXG019XNaknRmLec/edit?tab=t.0#heading=h.o4rytw2azsu7
 
 version of .NET used : 9.0.102 (make sure you are on right verion)
 
@@ -90,5 +88,3 @@ This approach gives you the benefits of machine learning without the complexity 
     4.Signal Quality Filter: Another Random Forest model that evaluates the probability of success for each signal based on historical performance under similar conditions.
 
     5.Risk Management: Rule-based position sizing and stop-loss calculation based on volatility and support/resistance levels.
-
-link : (to be removed in the end) https://colab.research.google.com/drive/10Qb11tN7z0Vbtiw0kQPdGFlrGcJVqk7A?usp=sharing
